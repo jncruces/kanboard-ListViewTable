@@ -1,5 +1,5 @@
 <section id="main">
-    <?= $this->projectHeader->render($project, 'ListViewTableController', 'show') ?>
+    <?= $this->projectHeader->render($project, 'ListViewTableController', 'show', false, 'ListViewTable') ?>
 
     <?php if ($paginator->isEmpty()): ?>
         <p class="alert"><?= t('No tasks found.') ?></p>

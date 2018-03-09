@@ -3,38 +3,24 @@
 namespace Kanboard\Plugin\ListViewTable\Formatter;
 
 use Kanboard\Core\Filter\FormatterInterface;
-use Kanboard\Formatter\BaseFormatter;
+use Kanboard\Formatter\ProjectApiFormatter;
 
 
 /**
  * Class ProjectApiFormatter
  *
- * @package Kanboard\Formatter
+ * @package Kanboard\Plugin\Calendar\Formatter
  */
-class ListViewTableFormatter extends BaseFormatter implements FormatterInterface
+class ListViewTableFormatter extends ProjectApiFormatter
 {
-    protected $project = null;
-
-    public function withProject($project)
-    {
-        $this->project = $project;
-        return $this;
-    }
-
-    /**
-     * Apply formatter
-     *
-     * @access public
-     * @return mixed
-     */
     public function format()
     {
-        if (! empty($this->project)) {
-            $this->project['url'] = array(
-                'listtable' => $this->helper->url->to('ListViewTableController', 'show', array('project_id' => $this->project['id'], 'plugin' => 'ListViewTable')),
-            );
+        $project = parent::format();
+
+        if (! empty($project)) {
+            $project['url']['listtable'] = $this->helper->url->to('ListViewTableController', 'show', array('project_id' => $project['id'], 'plugin' => 'ListViewTable'), '', true);
         }
 
-        return $this->project;
+        return $project;
     }
 }
