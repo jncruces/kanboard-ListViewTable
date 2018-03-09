@@ -5,7 +5,7 @@ namespace Kanboard\Plugin\ListViewTable;
 use Kanboard\Core\Plugin\Base;
 use Kanboard\Core\Security\Role;
 use Kanboard\Core\Translator;
-use Kanboard\Plugin\ListViewTable\Formatter\ListViewTableFormatter;
+// use Kanboard\Plugin\ListViewTable\Formatter\ListViewTableFormatter;
 
 class Plugin extends Base
 {
@@ -18,9 +18,9 @@ class Plugin extends Base
       $this->template->hook->attach('template:project:dropdown', 'ListViewTable:project/dropdown');
       $this->template->hook->attach('template:project-list:menu:after', 'ListViewTable:project_list/menu');
 
-      $this->container['listViewTableFormatter'] = $this->container->factory(function ($c) {
-          return new ListViewTableFormatter($c);
-      });
+      // $this->container['listViewTableFormatter'] = $this->container->factory(function ($c) {
+      //     return new ListViewTableFormatter($c);
+      // });
 
     }
 

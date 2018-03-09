@@ -23,7 +23,6 @@ class ListViewTableController extends BaseController
     {
         $project = $this->getProject();
         $search = $this->helper->projectHeader->getSearchQuery($project);
-        $filter = $this->taskLexer->build($search)->withFilter(new TaskProjectFilter($project['id']));
 
         $paginator = $this->paginator
             ->setUrl('ListViewTableController', 'show', array('plugin' => 'ListViewTable', 'project_id' => $project['id']))
